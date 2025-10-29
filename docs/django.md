@@ -63,3 +63,19 @@ for dateTime field
 For enumerations in django models, we use a function called `RegexValidator` using which we will be able to rank the users based on their ratings
 
 - `choices` - is the field that helps us to define an enumeration
+
+### Creating a controller
+
+now in django there are two types of controllers which are class based and function based now when we have started with the `register_user` as our primary controller example.
+
+we firstly check for the method if its GET,POST,PATCH or what type of request we recieved inorder to handle things additionally since we know a registeration is going to be a POST call, i have added a decorator to the function `@require_POST` which tells the django that this is a post request and note any other.
+
+Then we extract the data from string to json using json package and use `pydantic model` inorder to validate our data.
+
+Once done we use the django ORMs inbuild features like `filter`,`exists` and `create` inorder to manipulate data in the process.
+
+Another decorator `@csrf_exempt` is used to tell django that this route doesn't need csrf token protection against attack done for a route that doesn't require logged in users.
+
+Finally after all the manipulation is done we are sending a `JsonResponse` back to the user
+
+> [ Django JWT Authentication reference ](https://unfoldai.com/jwt-auth-in-django-guide/)
