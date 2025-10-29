@@ -31,8 +31,8 @@ logs/
 /staticfiles/
 
 # Django migrations (optional — uncomment if you don’t want to track them)
-# */migrations/*.py
-# !*/migrations/__init__.py
+*/migrations/*.py
+!*/migrations/__init__.py
 
 # Environment / virtualenv
 .env/
