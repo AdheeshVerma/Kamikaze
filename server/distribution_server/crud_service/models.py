@@ -14,6 +14,7 @@ class Personas(models.TextChoices):
 class User(models.Model):
     username= models.CharField(max_length=15,name="username",unique=True,db_index=True,editable=False)
     tagline= models.CharField(max_length=200,name="tagline")
+    password=models.CharField(name="password",null=False)
     email= models.CharField(name="email",unique=True,null=False,db_index=True)
     persona_name= models.CharField(name="persona_name",choices=Personas.choices, default=Personas.NOVICE)
     last_online=models.DateTimeField(name="last_online",auto_now=True)
