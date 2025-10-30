@@ -5,3 +5,17 @@ services:
     restart: always 
     ports:
       - "6379:6379"
+  neo4j:
+    image: neo4j:latest 
+    container_name: neo4j-standalone
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./data:/data
+      - ./logs:/logs 
+      - ./import:/var/lib/neo4j/import 
+    environment:
+      - NEO4J_AUTH=neo4j/password 
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+    restart: unless-stopped

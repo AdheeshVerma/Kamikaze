@@ -26,7 +26,8 @@ static/
 logs/
 .env
 .env.*
-
+data/
+logs/
 # If you use whitenoise
 /staticfiles/
 
