@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/crud/',include('crud_service.urls')),
     path('api/recommendation_service/',include('recommendation_service.urls')),
+    path("", include('social_django.urls', namespace="social")),
+
 ]

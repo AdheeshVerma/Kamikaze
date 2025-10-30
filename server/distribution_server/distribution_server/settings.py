@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crud_service',
     'recommendation_service',
-    'django_neomodel'
+    'django_neomodel',
+    'social_django',
+
 ]
 
 MIDDLEWARE = [
@@ -65,6 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -106,6 +110,25 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 AUTH_USER_MODEL="crud_service.CustomUser"
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_PIPELINE = (
+  "social_core.pipeline.social_auth.social_details",
+  "social_core.pipeline.social_auth.social_uid",
+  "social_core.pipeline.social_auth.auth_allowed",
+  "social_core.pipeline.social_auth.social_user",
+  "social_core.pipeline.social_auth.associate_by_email",
+  "social_core.pipeline.user.create_user",
+  "social_core.pipeline.social_auth.associate_user",
+  "social_core.pipeline.social_auth.load_extra_data",
+  "social_core.pipeline.user.user_details",
+)
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ("") # INCLUDE: OAUTH_KEY | TODO: ADD TO ENV
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "" # INCLUDE: OAUTH_SECRET | TODO: ADD TO ENV
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
