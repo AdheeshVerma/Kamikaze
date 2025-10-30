@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crud_service',
     'recommendation_service',
+    'django_neomodel'
 ]
 
 MIDDLEWARE = [
@@ -78,9 +80,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    }   
 }
-
+NEOMODEL_NEO4J_BOLT_URL = os.environ.get('NEO4J_BOLT_URL','bolt://neo4j:password@localhost:7687')
+NEOMODEL_SIGNALS = True
+NEOMODEL_FORCE_TIMEZONE = False
+NEOMODEL_ENCRYPTED_CONNECTION = True
+NEOMODEL_MAX_POOL_SIZE = 50
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
