@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
-from .models import User
+from .models import CustomUser as User
 from .api_validater import RegisterModel, LoginModel
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from jwt import JWT
 import json
+from django.contrib.auth import login
 
 def welcomeMsg(req):
     return HttpResponse("Welcome to Crud Services")
@@ -17,6 +18,7 @@ def register_user(req):
         if req.method=='POST':
             raw_data = json.loads(req.body)
             user_data = RegisterModel(**raw_data)
+            
             db_user = User.objects.filter(email=user_data.email)
             if db_user:
                 raise Exception("user already exist")
@@ -26,7 +28,8 @@ def register_user(req):
                 raise Exception("username already taken")
             
             created_user = User.objects.create(**raw_data)
-
+            created_user.set_password(user_data.password)
+            created_user.save()
             if not created_user:
                 raise Exception("unable to create user")
 
@@ -47,6 +50,7 @@ def login_user(req):
             raise Exception('user not found. kindly register')
         
         # TODO: match the password
+        print(user_data.password == db_user.Password)
         
         return JsonResponse({"data":{"token":"token_value"},"status":"success","code":"400"})
     except Exception as e:
