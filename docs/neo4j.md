@@ -12,4 +12,12 @@ Inorder to help us with graph database related things in django, we use `Django_
 
 I followed this [article](https://medium.com/swlh/create-rest-api-with-django-and-neo4j-database-using-django-nemodel-1290da717df9) inorder to setup the project.
 
+Inorder to shape the migrations to the databse, use the following command
+
+```bash
+python3 manage.py install_labels
+```
+
+---
+
 ## Writing cypher queries

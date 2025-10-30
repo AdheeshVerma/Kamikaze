@@ -28,6 +28,7 @@ logs/
 .env.*
 data/
 logs/
+import/
 # If you use whitenoise
 /staticfiles/
 
