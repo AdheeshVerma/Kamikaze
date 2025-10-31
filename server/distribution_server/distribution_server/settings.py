@@ -82,8 +82,13 @@ WSGI_APPLICATION = 'distribution_server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST':'',
+        'PORT': '',
+        'NAME': 'defaultdb',
+        'USER': '',
+        'PASSWORD': '',
+        'SSL':'REQUIRED',
     }   
 }
 NEOMODEL_NEO4J_BOLT_URL = os.environ.get('NEO4J_BOLT_URL','bolt://neo4j:password@localhost:7687')

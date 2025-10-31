@@ -35,7 +35,12 @@ in our project we have improved the project code maintainence by dividing the co
 - `recommendation_server` - which is like the main server which will be handling apis like recommend me my next anime
 - `crud_server` - which the server which will be handling CRUD apis.
 
-<!-- TODO(ADHEESH): HOW ROUTING WAS MANAGED -->
+### HOW ROUTING WAS MANAGED
+
+The Routing endpoints begin from our BASE_URL (127.0.0.1). There after as per the functionality the application is further subdivided into django applications to handle different functionalities.
+For basic CRUD operations on all the models (User, Anime, AnimeLists, Discussions) the crud service application is used and for that the base url goes to (127.0.0.1/api/crud_service) i.e. BASE_URL/api/crud_service
+Now for reccomendation_service the routing for this application changes to BASE_URL/api/reccomendation_engine
+Also for using the inbuilt functionality of django admin panel the general url is BASE_URL/admin
 
 ### DATABASE SETUP
 

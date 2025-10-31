@@ -9,7 +9,6 @@ Django==5.2.7
 django-ninja==1.4.5
 django_neomodel==0.2.0
 idna==3.11
-jwt==1.4.0
 neo4j==5.19.0
 neomodel==5.3.3
 oauthlib==3.3.1
@@ -27,3 +26,4 @@ sqlparse==0.5.3
 typing-inspection==0.4.2
 typing_extensions==4.15.0
 urllib3==2.5.0
+mysqlclient

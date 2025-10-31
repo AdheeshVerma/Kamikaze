@@ -4,7 +4,6 @@ from .models import CustomUser as User
 from .api_validater import RegisterModel, LoginModel
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
-from jwt import JWT
 import json
 from django.contrib.auth import login
 
@@ -55,3 +54,6 @@ def login_user(req):
         return JsonResponse({"data":{"token":"token_value"},"status":"success","code":"400"})
     except Exception as e:
          return JsonResponse({"message":str(e),"status":"failed","code":"400"})
+
+def add_anime(req):
+    pass
