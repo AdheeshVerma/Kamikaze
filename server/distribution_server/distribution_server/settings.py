@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+import pymysql
+
+
+pymysql.install_as_MySQLdb()
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path('_file_').resolve().parent.parent
@@ -83,11 +89,11 @@ WSGI_APPLICATION = 'distribution_server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST':'',
-        'PORT': '',
-        'NAME': 'defaultdb',
-        'USER': '',
-        'PASSWORD': '',
+        'HOST':os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASS'),
         'SSL':'REQUIRED',
     }
 }
@@ -147,8 +153,8 @@ SOCIAL_AUTH_PIPELINE = (
   "social_core.pipeline.social_auth.load_extra_data",
   "social_core.pipeline.user.user_details",
 )
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ("") # INCLUDE: OAUTH_KEY | TODO: ADD TO ENV
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "" # INCLUDE: OAUTH_SECRET | TODO: ADD TO ENV
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("OAUTH_KEY") # INCLUDE: OAUTH_KEY
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("OAUTH_SECRET") # INCLUDE: OAUTH_SECRET
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

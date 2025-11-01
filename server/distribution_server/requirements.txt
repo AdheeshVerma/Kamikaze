@@ -5,12 +5,12 @@ cffi==2.0.0
 charset-normalizer==3.4.4
 cryptography==46.0.3
 defusedxml==0.7.1
+dotenv==0.9.9
 Django==5.2.7
 django-ninja==1.4.5
 django-redis==6.0.0
 django_neomodel==0.2.0
 idna==3.11
-mysqlclient==2.2.7
 neo4j==5.19.0
 neomodel==5.3.3
 oauthlib==3.3.1
@@ -29,3 +29,4 @@ sqlparse==0.5.3
 typing-inspection==0.4.2
 typing_extensions==4.15.0
 urllib3==2.5.0
+pymysql==1.1.2

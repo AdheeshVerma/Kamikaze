@@ -45,6 +45,11 @@ Also for using the inbuilt functionality of django admin panel the general url i
 ### DATABASE SETUP
 
 the database used in our project is sqlite and now our main task is to create the database modeling for the project.
+By default we used Sqlite and its default services as provided by django but since at the end we had to migrate the db to cloud we used MySql server from Aiven Database Service
+For using that we had to use pymysql and use it as My_SQL_DB because django requires some certain parameters when connecting to mysql.
+One way was to use mysqlclient but it hasn't been release for the latest version of python and was also facing some issues in installing wheels (.whl) file so pymysql was the best option among the two.
+After that we just had to run makemigrations (Which creates the python file containg changes in the database and tables) and migrate (which actually applies them to the database and alters/creates the tables).
+
 
 <!-- TODO(ADHEESH): COMPLETE THE DATABASE SETUP STEPS -->
 
