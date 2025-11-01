@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path('_file_').resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -85,13 +85,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'HOST':'',
         'PORT': '',
-        'NAME': 'defaultdb',
+        'NAME': 'kamikaze_dev',
         'USER': '',
         'PASSWORD': '',
         'SSL':'REQUIRED',
-    }   
+    }
 }
-NEOMODEL_NEO4J_BOLT_URL = os.environ.get('NEO4J_BOLT_URL','bolt://neo4j:password@localhost:7687')
+
+NEOMODEL_NEO4J_BOLT_URL = os.environ.get('NEO4J_BOLT_URL','neo4j+s://neo4j:n6Ccb8-qfQ2WLO1O4qL3eGe1pKfLhQTyhpanN0-G7uA@1e19241c.databases.neo4j.io:7687')
 NEOMODEL_SIGNALS = True
 NEOMODEL_FORCE_TIMEZONE = False
 NEOMODEL_ENCRYPTED_CONNECTION = True
